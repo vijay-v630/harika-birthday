@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>Happy Birthday Harika!</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html, body {
+    margin: 0; padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e16a1b 0%, #029bf3 100%);
+    font-family: 'Open Sans', sans-serif;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  body {
+    position: relative;
+  }
+  .container {
+    background: #fff0f5cc;
+    border-radius: 30px;
+    width: 340px;
+    max-width: 95vw;
+    height: 580px;
+    max-height: 95vh;
+    padding: 35px 30px 45px 30px;
+    box-shadow: 0 20px 50px rgba(255, 105, 180, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    user-select: none;
+  }
+  .comrade-statement {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #7a3e53;
+    margin-top: -10px;
+    margin-bottom: 18px;
+    font-style: italic;
+    letter-spacing: 1.5px;
+    user-select: none;
+  }
+  h1 {
+    margin: 0;
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #e94e77;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    animation: heartbeat 2.5s infinite;
+  }
+  @keyframes heartbeat {
+    0%, 100% {
+      transform: scale(1);
+    }
+    14% {
+      transform: scale(1.05);
+    }
+    28% {
+      transform: scale(0.9);
+    }
+    42% {
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(1);
+    }
+  }
+  h2 {
+    margin: 5px 0 15px 0;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: #333;
+  }
+  .message {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    min-height: 90px;
+    padding: 0 5px;
+  }
+  .button {
+    font-weight: 600;
+    background: #e94e77;
+    color: white;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 8px 15px rgba(233,78,119,.35);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+  .button:hover, .button:focus {
+    background: #d43e65;
+    box-shadow: 0 10px 20px rgba(212,62,101,.5);
+  }
+  .confetti-wrapper {
+    pointer-events: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    overflow: visible;
+    z-index: 10;
+  }
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #e94e77;
+    opacity: 0.9;
+    transform-origin: center;
+    will-change: transform, opacity;
+    border-radius: 2px;
+  }
+  .music-toggle {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  .music-toggle svg {
+    fill: #e94e77;
+    width: 30px;
+    height: 30px;
+    transition: fill 0.3s ease;
+  }
+  .music-toggle:hover svg {
+    fill: #d43e65;
+  }
+  @media (max-width: 400px) {
+    .container {
+      width: 90vw;
+      height: auto;
+      padding: 25px 20px 30px 20px;
+    }
+    .comrade-statement {
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    .button {
+      width: 100%;
+      padding: 12px 0;
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="confetti-wrapper" aria-hidden="true"></div>
+  <button class="music-toggle" aria-label="Toggle birthday music" title="Toggle birthday music" aria-pressed="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3 9v6h4l5 5V4L7 9H3z"/>
+      <path d="M16 7v10h2V7h-2z"/>
+      <path d="M20 7v10h2V7h-2z"/>
+    </svg>
+  </button>
+  <audio id="birthdayAudio" autoplay loop>
+    <source src="/harika/audio/happy_birthday.mp3" type="audio/mpeg">
+  </audio>
+    <div class="container" role="main" aria-labelledby="mainTitle">
+    <h1 id="mainTitle" tabindex="0">Happy Birthday</h1>
+    <h2 tabindex="0">HARIKA</h2>
+    <div class="comrade-statement" tabindex="0">You're aging like fine wine, and it's nice to be along for the ride. Happy birthday!</div>
+    <div class="message" id="messageArea" aria-live="polite" tabindex="0">
+      Hope your special day is filled with love, laughter, and unforgettable moments!
+    </div>
+    <button class="button" id="revealBtn" aria-expanded="false" aria-controls="hiddenMessage">
+      Reveal Your Special Message
+    </button>
+    <div id="hiddenMessage" style="display:none; color:#d43e65; font-weight:700; font-size:1.2rem; margin-top:20px;" tabindex="0">
+      You are truly amazing and deserve all the happiness in the world! Have a fantastic birthday, Harika! 🎉❤️
+    </div>
+    <div class="images-container" style="margin-top: 20px; display: flex; justify-content: center; gap: 10px;">
+      <img src="/harika/imgs/IMG-20250827-WA0012.jpg" alt="Friends Celebration 1" style="max-width: 80px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);" />
+      <img src="/harika/imgs/ef32ded5-a29b-49ee-a7c9-113b55459a7c.png" alt="Friends Celebration 2" style="max-width: 80px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);" />
+      <img src="/harika/imgs/IMG-20250827-WA0010.jpg" alt="Friends Celebration 3" style="max-width: 80px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);" />
+    </div>
+  </div>
+
+<script>
+  const confettiWrapper = document.querySelector('.confetti-wrapper');
+  const colors = ['#e94e77', '#f6d365', '#fda085', '#ff9a9e', '#fad0c4', '#fbc1cc'];
+  const confettiCount = 120;
+  const confettis = [];
+
+  function randomRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function createConfetti() {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.backgroundColor = colors[Math.floor(randomRange(0, colors.length))];
+    confetti.style.left = `${randomRange(0, window.innerWidth)}px`;
+    confetti.style.top = `${randomRange(-20, -100)}px`;
+    confetti.style.width = `${randomRange(7, 12)}px`;
+    confetti.style.height = confetti.style.width;
+    confetti.rotation = randomRange(0, 360);
+    confetti.speed = randomRange(1, 3);
+    confetti.xSpeed = randomRange(-0.5, 0.5);
+    confettiWrapper.appendChild(confetti);
+    return confetti;
+  }
+
+  function setupConfetti() {
+    for (let i = 0; i < confettiCount; i++) {
+      confettis.push(createConfetti());
+    }
+  }
+
+  function animateConfetti() {
+    confettis.forEach(confetti => {
+      let x = parseFloat(confetti.style.left);
+      let y = parseFloat(confetti.style.top);
+      confetti.rotation += confetti.speed;
+      x += confetti.xSpeed;
+      y += confetti.speed;
+      if (y > window.innerHeight) {
+        y = randomRange(-100, -20);
+        x = randomRange(0, window.innerWidth);
+      }
+      if (x > window.innerWidth) x = 0;
+      if (x < 0) x = window.innerWidth;
+      confetti.style.left = x + 'px';
+      confetti.style.top = y + 'px';
+      confetti.style.transform = `rotate(${confetti.rotation}deg)`;
+    });
+    requestAnimationFrame(animateConfetti);
+  }
+
+  setupConfetti();
+  animateConfetti();
+
+  const revealBtn = document.getElementById('revealBtn');
+  const hiddenMessage = document.getElementById('hiddenMessage');
+  const messageArea = document.getElementById('messageArea');
+
+  revealBtn.addEventListener('click', () => {
+    const isExpanded = revealBtn.getAttribute('aria-expanded') === 'true';
+    if (isExpanded) {
+      hiddenMessage.style.display = 'none';
+      revealBtn.setAttribute('aria-expanded', 'false');
+      revealBtn.textContent = 'Reveal Your Special Message';
+      messageArea.textContent = 'Hope your special day is filled with love, laughter, and unforgettable moments!';
+    } else {
+      hiddenMessage.style.display = 'block';
+      revealBtn.setAttribute('aria-expanded', 'true');
+      revealBtn.textContent = 'Hide Your Special Message';
+      messageArea.textContent = 'Wishing you joy and smiles beyond measure!';
+    }
+  });
+</script>
+</body>
+</html>
